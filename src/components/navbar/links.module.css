@@ -1,0 +1,7 @@
+.active {
+    background-color: var(--text);
+    color: var(--bg-soft);
+    padding: .2em .5em;
+    border-radius: 50px;
+    font-weight: 500;
+}
