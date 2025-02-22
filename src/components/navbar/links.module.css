@@ -1,7 +1,31 @@
 .active {
     background-color: var(--text);
     color: var(--bg-soft);
-    padding: .2em .5em;
+    padding: .4em .7em;
     border-radius: 50px;
     font-weight: 500;
+    width: fit-content;
+}
+
+.nav {
+    position: fixed;
+    top: 4rem;
+    right: -100%;
+    min-height: 100vh;
+    display: flex;
+    width: 35%;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: transparent;
+    padding-block: 2.5rem;
+    align-items: center;
+    transition: right .5s ease-in-out;
+}
+
+.show { right: 0; }
+
+.hide { right: -100%; }
+
+@media screen and (min-width: 768px) {
+    .nav { display: none; }
 }

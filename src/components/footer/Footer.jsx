@@ -1,9 +1,9 @@
 
 export default function Footer() {
 return (
-    <div className="flex items-center justify-between text-gray-600">
-        <span>rolex.dev</span>
-        <span>rolex creative thoughts agency &copy; All rights reserved</span>
+    <div className="flex flex-col md:flex-row gap-5 items-center justify-between text-gray-500">
+        <span className="font-extrabold">rolex.dev</span>
+        <span className="text-sm">rolex creative thoughts agency &copy; All rights reserved</span>
     </div>
 );
 }

@@ -11,14 +11,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className='flex justify-center min-h-screen w-full'>
-        <div className='w-[80%] py-8 text-lg flex flex-col gap-10'>
+        <div className='w-[85%] py-8 text-lg flex flex-col gap-10'>
           <Navbar />
 
           {children}
 
-          <div className='mt-auto'>
+          <footer className='mt-auto relative z-10'>
           <Footer />
-          </div>
+          </footer>
 
         </div>
       </body>
