@@ -11,18 +11,19 @@
     position: fixed;
     top: 4rem;
     right: -100%;
-    min-height: 100vh;
+    height: 100dvh;
     display: flex;
-    width: 35%;
+    width: 50%;
     flex-direction: column;
     gap: 1.5rem;
-    background-color: transparent;
+    background-color: var(--bg);
     padding-block: 2.5rem;
+    border: none;
     align-items: center;
     transition: right .5s ease-in-out;
 }
 
-.show { right: 0; }
+.show { right: -1rem; }
 
 .hide { right: -100%; }
 

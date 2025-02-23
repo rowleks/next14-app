@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className='flex justify-center min-h-screen w-full'>
+      <body className='flex justify-center w-full min-h-full'>
         <div className='w-[85%] py-8 text-lg flex flex-col gap-10'>
           <Navbar />
 

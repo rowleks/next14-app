@@ -25,6 +25,7 @@ useEffect(() => {
 
 
 const pathName = usePathname();
+
 const links = [
     { title: 'homepage', path: '/' },
     { title: 'about', path: '/about' },
@@ -33,9 +34,7 @@ const links = [
 ]
 return (
     <>
-        <div className="md:hidden">
-        <Image className="cursor-pointer" src="/menu.png" width={30} height={30} alt="hamburger" onClick={()=> setOpen(prev => !prev)} ref={menuRef}/>
-        </div>
+        <Image className="cursor-pointer md:hidden" src="/menu.png" width={30} height={30} alt="hamburger" onClick={()=> setOpen(prev => !prev)} ref={menuRef}/>
 
         <nav className="hidden md:flex md:gap-[2rem] lg:gap-[3rem] items-center">
         {
@@ -77,7 +76,8 @@ return (
             </form>
             </>
         ) : 
-            ( <Link className={ pathName === '/login' && styles.active } href="/login">Login</Link>)
+
+        ( <Link className={ pathName === '/login' && styles.active } href="/login">Login</Link>)
         }
         </nav>
     
