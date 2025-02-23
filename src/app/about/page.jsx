@@ -1,8 +1,9 @@
+import AboutHero from "@/components/about-hero/AboutHero";
 
 export default function About() {
 return (
-    <div>
-        <h1>About</h1>
-    </div>
+    <main className="flex flex-col">
+        <AboutHero />
+    </main>
 );
 }

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Hero() {
 return (
-    <div className="md:flex gap-2 w-full">
+    <div className="md:flex gap-[2rem] w-full">
         <section className="flex flex-1 flex-col gap-10 items-center lg:items-start">
             <div className="contents text-center lg:text-left">
                 <h1 className="text-6xl/20 md:text-8xl/30 font-bold">Creative Thoughts Agency.</h1>
@@ -15,14 +15,14 @@ return (
             </div>
 
             <div className="h-[60px] w-[85%] lg:w-full relative ml-auto lg:ml-0">
-            <Image src="/brands.png" alt="brands" fill className="object-contain grayscale"/>
+            <Image src="/brands.png" alt="brands" fill className="object-contain lg:object-left grayscale"/>
             </div>
 
 
         </section>
 
         <section className="hidden flex-1 lg:flex relative h-full w-1/2">
-            <Image src="/hero.gif" fill alt="hero gif"  className="object-fill xl:object-cover"/>
+            <Image src="/hero.gif" fill alt="hero gif"  className="object-fill xl:object-contain"/>
         </section>
 
         

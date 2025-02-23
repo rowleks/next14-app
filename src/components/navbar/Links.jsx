@@ -34,7 +34,7 @@ const links = [
 ]
 return (
     <>
-        <Image className="cursor-pointer md:hidden" src="/menu.png" width={30} height={30} alt="hamburger" onClick={()=> setOpen(prev => !prev)} ref={menuRef}/>
+        <Image className="cursor-pointer md:hidden z-10" src="/menu.png" width={30} height={30} alt="hamburger" onClick={()=> setOpen(prev => !prev)} ref={menuRef}/>
 
         <nav className="hidden md:flex md:gap-[2rem] lg:gap-[3rem] items-center">
         {
