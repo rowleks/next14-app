@@ -27,7 +27,7 @@ useEffect(() => {
 const pathName = usePathname();
 
 const links = [
-    { title: 'homepage', path: '/' },
+    { title: 'home', path: '/' },
     { title: 'about', path: '/about' },
     { title: 'contact', path: '/contact' },
     { title: 'blog', path: '/blog' }
