@@ -21,6 +21,7 @@
     border: none;
     align-items: center;
     transition: right .5s ease-in-out;
+    z-index: 3;
 }
 
 .show { right: -1rem; }
