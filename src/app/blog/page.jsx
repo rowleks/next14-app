@@ -34,19 +34,19 @@ export default function Blog() {
                     First
                 </button>
                 <button 
-                    onClick={nextPage} 
-                    disabled={currentPage === totalPages}
-                    className={`px-4 py-2 border rounded ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-700 cursor-pointer'}`}
-                >
-                    Next
-                </button>
-                <span className="font-bold">{currentPage} / {totalPages}</span>
-                <button 
                     onClick={prevPage} 
                     disabled={currentPage === 1}
                     className={`px-4 py-2 border rounded ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-700 cursor-pointer'}`}
                 >
                     Previous
+                </button>
+                <span className="font-bold">{currentPage} / {totalPages}</span>
+                <button 
+                    onClick={nextPage} 
+                    disabled={currentPage === totalPages}
+                    className={`px-4 py-2 border rounded ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-700 cursor-pointer'}`}
+                >
+                    Next
                 </button>
                 <button 
                     onClick={lastPage} 

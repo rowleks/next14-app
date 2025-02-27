@@ -40,7 +40,7 @@ return (
         <nav className="hidden md:flex md:gap-[2rem] lg:gap-[3rem] items-center">
         {
             links.map(link=> (
-                <Link className={`capitalize ${ pathName === link.path && styles.active }`} key={link.title} href={link.path}>{link.title}</Link>
+                <Link className={`capitalize ${ pathName === link.path && styles.active } ${pathName.match(link.path + '/') && styles.active}`} key={link.title} href={link.path}>{link.title}</Link>
             ))
         }
 

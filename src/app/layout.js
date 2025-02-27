@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
 
           {children}
 
-          <footer className='mt-auto relative z-10'>
+          <footer className='mt-auto relative z-10 h-fit'>
           <Footer />
           </footer>
 

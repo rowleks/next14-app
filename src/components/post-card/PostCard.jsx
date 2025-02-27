@@ -40,7 +40,7 @@ export default function PostCard() {
             <section className="flex flex-col gap-2 w-[calc(100%-2.5rem)]">
                 <h2 className="font-bold text-xl">Blog Post Title</h2>
                 <p className="text-txt-soft line-clamp-3 text-[.9rem]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, iusto atque accusamus voluptas perferendis repellat cum numquam blanditiis nemo reiciendis similique quis doloremque saepe dolores ipsam delectus eum? Distinctio, fugit.</p>
-                <Link className="underline text-[1rem]" href="#">READ MORE</Link>
+                <Link className="underline text-[1rem]" href="/blog/1">READ MORE</Link>
             </section>
         </div>
     );
