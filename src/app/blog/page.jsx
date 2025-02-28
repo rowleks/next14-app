@@ -1,10 +1,12 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PostCard from "@/components/post-card/PostCard";
+import { getPosts } from "../lib/data";
 
 export default function Blog() {
-    const posts = new Array(50).fill(null); // Simulating 20 posts (replace with actual data)
+
+    const [posts, setPosts] = useState([]);
     const postsPerPage = 9;
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -17,11 +19,28 @@ export default function Blog() {
     const firstPage = () => setCurrentPage(1);
     const lastPage = () => setCurrentPage(totalPages);
 
+
+    //Fetch posts using useEffect because the component is a client side component.
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const posts = await getPosts();
+            setPosts(posts);
+        }
+        fetchPosts();
+    }
+    , []);
+    
+
+    if(!totalPages) {
+        return <div className="grid items-center justify-center h-full">No posts found</div>
+    }
+
     return (
         <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                {currentPosts.map((_, index) => (
-                    <PostCard key={startIndex + index} />
+                {currentPosts.map((post) => (
+                    <PostCard post={post} key={post.id} />
                 ))}
             </div>
 
