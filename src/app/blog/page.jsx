@@ -44,7 +44,7 @@ export default function Blog() {
                 ))}
             </div>
 
-            <div className="flex justify-center items-center gap-4 mt-10">
+            {totalPages>1 && (<div className="flex justify-center items-center gap-4 mt-10">
                 <button 
                     onClick={firstPage} 
                     disabled={currentPage === 1}
@@ -74,7 +74,7 @@ export default function Blog() {
                 >
                     Last
                 </button>
-            </div>
+            </div>)}
         </div>
     );
 }

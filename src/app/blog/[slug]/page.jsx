@@ -13,7 +13,7 @@ export default async function SinglePost({params}) {
 return (
     <div className="grid md:grid-cols-[450px_1fr] gap-12">
         <section className="min-h-[30rem] md:min-h-[35rem] w-full relative flex-1">
-            <Image src="/blog2.jpg" alt="blog image" fill/>
+            <Image src={post.img} alt="blog image" fill/>
         </section>
 
         <section className="flex flex-col gap-8 flex-3">

@@ -1,5 +1,3 @@
-
-
 const users = [
     { id: 1, name: 'Terry Jefferson', img: '/blog3.jpg'},
     { id: 2, name: 'John Doe', img: '/blog2.jpg'},
