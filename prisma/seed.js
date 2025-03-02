@@ -11,6 +11,7 @@ async function main() {
     data: Array.from({ length: 5 }).map(() => ({
       email: faker.internet.email(),
       name: faker.person.fullName(),
+      avatar: faker.image.avatar(),
     })),
     skipDuplicates: true,
   });
@@ -23,6 +24,7 @@ async function main() {
     await prisma.post.createMany({
       data: Array.from({ length: 3 }).map(() => ({
         title: faker.lorem.sentence(),
+        image: faker.image.urlLoremFlickr({ width: 800, height: 600 }),
         content: faker.lorem.paragraphs(2),
         authorId: user.id,
       })),
