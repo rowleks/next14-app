@@ -3,7 +3,14 @@
 import prisma from "../../../prisma/client";
 
 export async function getUsers() {
-  return await prisma.user.findMany();
+  try {
+    return await prisma.user.findMany();
+  } catch (err) {
+    console.log("Error fetching post", err);
+    return false;
+  } finally {
+    prisma.$disconnect();
+  }
 }
 
 export async function createUser(email, name, avatar) {
@@ -13,7 +20,15 @@ export async function createUser(email, name, avatar) {
 }
 
 export async function getUserById(id) {
-  return await prisma.user.findUnique({
-    where: { id },
-  });
+  try {
+    return await prisma.user.findUnique({
+      where: { id },
+      include: { posts: { select: { createdAt: true } } },
+    });
+  } catch (err) {
+    console.log("Error fetching post", err);
+    return false;
+  } finally {
+    prisma.$disconnect();
+  }
 }
