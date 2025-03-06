@@ -2,16 +2,18 @@
 
 import prisma from "../../../prisma/client";
 
-export async function getUsers() {
+//Getting users should be done in via api, using server actions do not cache the data.
+
+/* export async function getUsers() {
   try {
     return await prisma.user.findMany();
   } catch (err) {
     console.log("Error fetching post", err);
     return false;
   } finally {
-    prisma.$disconnect();
+    await prisma.$disconnect();
   }
-}
+} */
 
 export async function createUser(email, name, avatar) {
   return await prisma.user.create({
@@ -29,6 +31,6 @@ export async function getUserById(id) {
     console.log("Error fetching post", err);
     return false;
   } finally {
-    prisma.$disconnect();
+    await prisma.$disconnect();
   }
 }

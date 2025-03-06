@@ -1,12 +1,10 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../../prisma/client";
 
-// import prisma from "../../../prisma/client";
+//Getting posts should be done in via api, using server actions do not cache the data.
 
-const prisma = new PrismaClient();
-
-export async function getPosts() {
+/* export async function getPosts() {
   try {
     const posts = await prisma.post.findMany({
       include: {
@@ -21,9 +19,10 @@ export async function getPosts() {
     console.log("Error fetching post", err);
     return false;
   } finally {
-    prisma.$disconnect();
+    await prisma.$disconnect();
   }
 }
+ */
 
 export async function createPost({ title, content, image, authorId }) {
   return await prisma.post.create({
@@ -40,6 +39,6 @@ export async function getPostById(id) {
     console.log("Error fetching post", err);
     return false;
   } finally {
-    prisma.$disconnect();
+    await prisma.$disconnect();
   }
 }

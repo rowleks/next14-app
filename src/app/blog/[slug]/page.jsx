@@ -1,4 +1,4 @@
-import { getPostById } from "@/app/actions/postActions";
+// import { getPostById } from "@/app/actions/postActions";
 import Author from "@/components/author-info/Author";
 import AuthorSkeleton from "@/components/author-skeleton/AuthorSkeleton";
 import Image from "next/image";
@@ -6,10 +6,15 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 export default async function SinglePost({ params }) {
-  const post = await getPostById(Number(params?.slug));
+  const id = params?.slug;
+  const res = await fetch(`http://localhost:3000/api/blog/${id}`);
 
-  if (isNaN(Number(params?.slug)) || !post) {
-    notFound();
+  const post = await res.json();
+
+  console.log(post);
+
+  if (isNaN(Number(id)) || !id) {
+    return notFound();
   }
 
   return (
@@ -22,7 +27,7 @@ export default async function SinglePost({ params }) {
         <h1 className="text-5xl font-bold">{post.title}</h1>
 
         <Suspense fallback={<AuthorSkeleton />}>
-          <Author userId={post.id} />
+          <Author userId={post.authorId} postId={post.id} />
         </Suspense>
 
         <p className="whitespace-break-spaces">{post.content}</p>

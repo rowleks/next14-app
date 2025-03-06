@@ -1,13 +1,25 @@
-import { getUserById } from "@/app/actions/userActions";
+// import { getUserById } from "@/app/actions/userActions";
 import Image from "next/image";
 
-export default async function Author({ userId }) {
-  const author = await getUserById(userId);
+export default async function Author({ userId, postId }) {
+  // const author = await getUserById(userId);
 
-  const date = author.posts[0].createdAt.toLocaleDateString("en-US", {
+  const res = await fetch(`http://localhost:3000/api/users/${userId}`);
+
+  if (!res.ok) {
+    console.error("Failed to fetch author:", res.statusText);
+    return null;
+  }
+
+  const author = await res.json();
+
+  const currPost = author.posts.find((post) => post.id === postId);
+
+  const date = new Date(currPost.createdAt).toLocaleDateString("en-US", {
     month: "short",
     day: "2-digit",
-    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
 
   return (

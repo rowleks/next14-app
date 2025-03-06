@@ -6,13 +6,11 @@ import Link from "next/link";
 
 export default function PostCard({ post }) {
   const [loading, setLoading] = useState(true);
-  const date = post.createdAt.toLocaleDateString("en-US", {
+  const date = new Date(post.createdAt).toLocaleDateString("en-US", {
     month: "short",
     day: "2-digit",
     year: "numeric",
   });
-
-  console.log(date);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);

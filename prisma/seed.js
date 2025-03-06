@@ -22,14 +22,15 @@ async function main() {
   // Create random posts for each user
   for (const user of allUsers) {
     const wordCount = Math.floor(Math.random() * (8 - 6 + 1)) + 6;
+    const paragraphCount = Math.floor(Math.random() * (8 - 6 + 1)) + 3;
     await prisma.post.createMany({
-      data: Array.from({ length: 3 }).map(() => ({
+      data: Array.from({ length: 2 }).map(() => ({
         title: faker.lorem.sentence(wordCount),
         image: faker.image.urlPicsumPhotos({
           width: 800,
           height: 600,
         }),
-        content: faker.lorem.paragraphs(2),
+        content: faker.lorem.paragraphs(paragraphCount),
         authorId: user.id,
       })),
     });
