@@ -1,17 +1,18 @@
-// import { getUserById } from "@/app/actions/userActions";
 import Image from "next/image";
 
-export default async function Author({ userId, postId }) {
-  // const author = await getUserById(userId);
-
-  const res = await fetch(`http://localhost:3000/api/users/${userId}`);
+const fetchData = async (id) => {
+  const res = await fetch(`http://localhost:3000/api/users/${id}`);
 
   if (!res.ok) {
     console.error("Failed to fetch author:", res.statusText);
     return null;
   }
 
-  const author = await res.json();
+  return await res.json();
+};
+
+export default async function Author({ userId, postId }) {
+  const author = await fetchData(userId);
 
   const currPost = author.posts.find((post) => post.id === postId);
 

@@ -5,17 +5,25 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
-export default async function SinglePost({ params }) {
-  const id = params?.slug;
+const fetchData = async (id) => {
   const res = await fetch(`http://localhost:3000/api/blog/${id}`);
 
-  const post = await res.json();
+  if (!res.ok) {
+    console.error("Failed to fetch author:", res.statusText);
+    return null;
+  }
 
-  console.log(post);
+  return await res.json();
+};
+
+export default async function SinglePost({ params }) {
+  const id = params?.slug;
 
   if (isNaN(Number(id)) || !id) {
     return notFound();
   }
+
+  const post = await fetchData(id);
 
   return (
     <div className="grid md:grid-cols-[450px_1fr] gap-12">

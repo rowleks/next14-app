@@ -23,7 +23,7 @@ export default function BlogPage({ data }) {
   useEffect(() => {
     if (data) setPosts(data);
     setLoading(false);
-  }, []);
+  }, [data]);
 
   if (loading) {
     return <Spinner />;
