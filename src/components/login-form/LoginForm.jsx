@@ -1,16 +1,11 @@
-import { testUser } from "@/app/actions/userActions";
 import Link from "next/link";
+// import LoginBtn from "../login-btn/LoginBtn";
 
 export default function LoginForm() {
   return (
     <div className="p-8 md:p-12 bg-primary-soft w-[500px]">
-      <form className="w-full flex flex-col gap-8 text-sm" action={testUser}>
-        <button
-          className=" rounded-md p-4.5 text-primary-soft font-bold bg-txt cursor-pointer"
-          type="button"
-        >
-          Login with Github
-        </button>
+      <form className="w-full flex flex-col gap-8 text-sm">
+        {/* <LoginBtn /> */}
 
         <label htmlFor="username">
           <input

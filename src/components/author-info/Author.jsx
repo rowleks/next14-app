@@ -14,7 +14,7 @@ const fetchData = async (id) => {
 export default async function Author({ userId, postId }) {
   const author = await fetchData(userId);
 
-  const currPost = author.posts.find((post) => post.id === postId);
+  const currPost = author?.posts.find((post) => post.id === postId);
 
   const date = new Date(currPost.createdAt).toLocaleDateString("en-US", {
     month: "short",

@@ -5,9 +5,11 @@ import { usePathname } from "next/navigation";
 import styles from "./links.module.css";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function Links() {
-  const session = false;
+  const { data: session } = useSession();
   const isAdmin = false;
 
   const [open, setOpen] = useState(false);
@@ -36,6 +38,7 @@ export default function Links() {
     { title: "contact", path: "/contact" },
     { title: "blog", path: "/blog" },
   ];
+
   return (
     <>
       <Image
@@ -53,7 +56,9 @@ export default function Links() {
           <Link
             className={`capitalize ${
               pathName === link.path ? styles.active : undefined
-            } ${pathName.match(link.path + "/") ? styles.active : undefined}`}
+            } ${
+              pathName.startsWith(`${link.path}/`) ? styles.active : undefined
+            }`}
             key={link.title}
             href={link.path}
           >
@@ -71,11 +76,12 @@ export default function Links() {
                 Admin
               </Link>
             )}
-            <form>
-              <button className="font-medium cursor-pointer p-2 rounded-sm bg-gray-500 text-primary-soft hover:bg-white">
-                Logout
-              </button>
-            </form>
+            <button
+              onClick={() => signOut({ callbackUrl: "/" })}
+              className="font-medium cursor-pointer p-2 rounded-sm bg-gray-500 text-primary-soft hover:bg-white"
+            >
+              Logout
+            </button>
           </>
         ) : (
           <Link
@@ -116,11 +122,12 @@ export default function Links() {
                 Admin
               </Link>
             )}
-            <form>
-              <button className="font-medium cursor-pointer p-2 rounded-sm bg-gray-500 text-primary-soft hover:bg-white">
-                Logout
-              </button>
-            </form>
+            <button
+              onClick={() => signOut({ callbackUrl: "/" })}
+              className="font-medium cursor-pointer p-2 rounded-sm bg-gray-500 text-primary-soft hover:bg-white"
+            >
+              Logout
+            </button>
           </>
         ) : (
           <Link
