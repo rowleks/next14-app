@@ -1,7 +1,9 @@
 import Image from "next/image";
 
 const fetchData = async (id) => {
-  const res = await fetch(`http://localhost:3000/api/users/${id}`);
+  const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+    next: { revalidate: 60 },
+  });
 
   if (!res.ok) {
     console.error("Failed to fetch author:", res.statusText);

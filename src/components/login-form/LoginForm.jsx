@@ -11,10 +11,10 @@ export default function LoginForm() {
         <label htmlFor="username">
           <input
             className="bg-primary p-4.5 rounded-md w-full "
-            type="text"
-            placeholder="Username"
-            id="username"
-            name="username"
+            type="email"
+            placeholder="email"
+            id="email"
+            name="email"
           />
         </label>
 

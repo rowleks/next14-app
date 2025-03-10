@@ -7,9 +7,8 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { logoutUser } from "@/app/actions/authActions";
 
-export default function Links() {
+export default function Links({ session }) {
   const isAdmin = false;
-  const session = false;
 
   const [open, setOpen] = useState(false);
   const navRef = useRef(null);
