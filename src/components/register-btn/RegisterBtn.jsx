@@ -2,7 +2,7 @@
 
 import { useFormStatus } from "react-dom";
 
-export default function LoginBtn() {
+export default function RegisterBtn() {
   const { pending } = useFormStatus();
   return (
     <button

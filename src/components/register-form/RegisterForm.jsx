@@ -1,13 +1,15 @@
+"use client";
+
 import { registerUser } from "@/app/actions/authActions";
 import Link from "next/link";
+import { useFormState } from "react-dom";
+import RegisterBtn from "../register-btn/RegisterBtn";
 
 export default function LoginForm() {
+  const [state, formAction] = useFormState(registerUser, {});
   return (
     <div className="p-8 md:p-12 bg-primary-soft w-[500px]">
-      <form
-        className="w-full flex flex-col gap-8 text-sm"
-        action={registerUser}
-      >
+      <form className="w-full flex flex-col gap-8 text-sm" action={formAction}>
         <label htmlFor="username">
           <input
             className="bg-primary p-4.5 rounded-md w-full"
@@ -48,12 +50,11 @@ export default function LoginForm() {
           />
         </label>
 
-        <button
-          className="p-4.5 font-bold bg-txt-btn rounded-md  text-txt cursor-pointer"
-          type="submit"
-        >
-          Register
-        </button>
+        <RegisterBtn />
+
+        {state?.error && (
+          <p className="text-red-500 text-lg text-center">{state.error}</p>
+        )}
 
         <span className="text-center text-[1rem]">
           Have an account?{" "}

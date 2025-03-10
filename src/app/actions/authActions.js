@@ -7,10 +7,18 @@ import prisma from "../../../prisma/client";
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
-export async function registerUser(formData) {
+export async function registerUser(prevState, formData) {
   try {
     const { name, email, password, passwordAgain } =
       Object.fromEntries(formData);
+
+    if (!name) {
+      return { error: "Name is required" };
+    }
+
+    if (!email) {
+      return { error: "Email is required" };
+    }
 
     if (password !== passwordAgain) {
       return { error: "Passwords do not match" };
