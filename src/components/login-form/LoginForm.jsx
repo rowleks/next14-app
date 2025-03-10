@@ -1,10 +1,11 @@
+import { loginUser } from "@/app/actions/authActions";
 import Link from "next/link";
 // import LoginBtn from "../login-btn/LoginBtn";
 
 export default function LoginForm() {
   return (
     <div className="p-8 md:p-12 bg-primary-soft w-[500px]">
-      <form className="w-full flex flex-col gap-8 text-sm">
+      <form className="w-full flex flex-col gap-8 text-sm" action={loginUser}>
         {/* <LoginBtn /> */}
 
         <label htmlFor="username">

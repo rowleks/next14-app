@@ -9,7 +9,7 @@ async function main() {
   // Create multiple users
   await prisma.user.createMany({
     data: Array.from({ length: 5 }).map(() => ({
-      email: faker.internet.email(),
+      email: faker.internet.email().toLowerCase(),
       name: faker.person.fullName(),
       avatar: faker.image.avatar(),
     })),
@@ -39,11 +39,7 @@ async function main() {
   console.log("Database seeded successfully! 🌱");
 }
 
-main()
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

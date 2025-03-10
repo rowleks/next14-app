@@ -5,12 +5,11 @@ import { usePathname } from "next/navigation";
 import styles from "./links.module.css";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { signOut } from "next-auth/react";
-import { useSession } from "next-auth/react";
+import { logoutUser } from "@/app/actions/authActions";
 
 export default function Links() {
-  const { data: session } = useSession();
   const isAdmin = false;
+  const session = false;
 
   const [open, setOpen] = useState(false);
   const navRef = useRef(null);
@@ -76,12 +75,12 @@ export default function Links() {
                 Admin
               </Link>
             )}
-            <button
-              onClick={() => signOut({ callbackUrl: "/" })}
-              className="font-medium cursor-pointer p-2 rounded-sm bg-gray-500 text-primary-soft hover:bg-white"
-            >
-              Logout
-            </button>
+
+            <form action={logoutUser}>
+              <button className="font-medium cursor-pointer p-2 rounded-sm bg-gray-500 text-primary-soft hover:bg-white">
+                Logout
+              </button>
+            </form>
           </>
         ) : (
           <Link
@@ -122,12 +121,12 @@ export default function Links() {
                 Admin
               </Link>
             )}
-            <button
-              onClick={() => signOut({ callbackUrl: "/" })}
-              className="font-medium cursor-pointer p-2 rounded-sm bg-gray-500 text-primary-soft hover:bg-white"
-            >
-              Logout
-            </button>
+
+            <form action={logoutUser}>
+              <button className="font-medium cursor-pointer p-2 rounded-sm bg-gray-500 text-primary-soft hover:bg-white">
+                Logout
+              </button>
+            </form>
           </>
         ) : (
           <Link

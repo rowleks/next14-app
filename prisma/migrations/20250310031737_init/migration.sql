@@ -3,6 +3,7 @@ CREATE TABLE "Post" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "content" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
     "authorId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -15,6 +16,8 @@ CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "password" TEXT,
+    "avatar" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
