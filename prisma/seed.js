@@ -8,7 +8,7 @@ async function main() {
 
   // Create multiple users
   await prisma.user.createMany({
-    data: Array.from({ length: 5 }).map(() => ({
+    data: Array.from({ length: 3 }).map(() => ({
       email: faker.internet.email().toLowerCase(),
       name: faker.person.fullName(),
       avatar: faker.image.avatar(),
@@ -24,7 +24,7 @@ async function main() {
     const wordCount = Math.floor(Math.random() * (8 - 6 + 1)) + 6;
     const paragraphCount = Math.floor(Math.random() * (8 - 6 + 1)) + 3;
     await prisma.post.createMany({
-      data: Array.from({ length: 2 }).map(() => ({
+      data: Array.from({ length: 3 }).map(() => ({
         title: faker.lorem.sentence(wordCount),
         image: faker.image.urlPicsumPhotos({
           width: 800,
