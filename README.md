@@ -12,6 +12,7 @@ This is a blog app built with Next.js, Prisma, and Tailwind CSS. It includes aut
 - [Project Structure](#project-structure)
 - [Environment Variables](#environment-variables)
 - [Scripts](#scripts)
+- [Salutation](#salutation)
 - [Contributing](#contributing)
 - [License](#license)
 
