@@ -34,7 +34,7 @@ export async function registerUser(prevState, formData) {
     await prisma.user.create({
       data: {
         name,
-        email,
+        email: email.toLowerCase(),
         password: hashedPassword,
       },
     });
@@ -46,7 +46,7 @@ export async function registerUser(prevState, formData) {
   }
 }
 
-export async function loginUser(formData) {
+export async function loginUser(prevState, formData) {
   const { email, password } = Object.fromEntries(formData);
 
   const user = await prisma.user.findUnique({ where: { email } });

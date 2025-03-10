@@ -1,8 +1,10 @@
 import Image from "next/image";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const fetchData = async (id) => {
-  const res = await fetch(`http://localhost:3000/api/users/${id}`, {
-    next: { revalidate: 60 },
+  const res = await fetch(`${API_URL}/api/users/${id}`, {
+    next: { revalidate: 86400 },
   });
 
   if (!res.ok) {

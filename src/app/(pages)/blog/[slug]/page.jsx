@@ -5,8 +5,12 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const fetchData = async (id) => {
-  const res = await fetch(`http://localhost:3000/api/blog/${id}`);
+  const res = await fetch(`${API_URL}/api/blog/${id}`, {
+    next: { revalidate: 86400 },
+  });
 
   if (!res.ok) {
     console.error("Failed to fetch author:", res.statusText);

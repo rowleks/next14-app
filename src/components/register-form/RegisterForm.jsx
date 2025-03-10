@@ -4,9 +4,17 @@ import { registerUser } from "@/app/actions/authActions";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import RegisterBtn from "../register-btn/RegisterBtn";
+import { useState } from "react";
+import CustomDialog from "../dialog/Dialog";
 
 export default function LoginForm() {
   const [state, formAction] = useFormState(registerUser, {});
+  const [showDialog, setShowDialog] = useState(false);
+
+  if (state?.success && !showDialog) {
+    setShowDialog(true);
+  }
+
   return (
     <div className="p-8 md:p-12 bg-primary-soft w-[500px]">
       <form className="w-full flex flex-col gap-8 text-sm" action={formAction}>
@@ -60,9 +68,16 @@ export default function LoginForm() {
           Have an account?{" "}
           <Link className="font-bold" href="/login">
             Login
-          </Link>{" "}
+          </Link>
         </span>
       </form>
+
+      <CustomDialog
+        open={showDialog}
+        onClose={() => (window.location.href = "/login")}
+        title="Registration Successful"
+        message="Your account has been created successfully! Click Ok to login"
+      />
     </div>
   );
 }
